@@ -35,7 +35,7 @@ class Entry {
     // check notion entreis against schoology events? or the other way around?
     static async findNewEntries(sgyEvents, duplicates) {
         let newEntries = [];
-
+        console.log(sgyEvents)
         for (let i = 0; i < sgyEvents.length; i++) {
             let isInDuplicates = false;
             for (let j = 0; j < duplicates.length; j++) {

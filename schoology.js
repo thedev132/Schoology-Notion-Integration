@@ -34,9 +34,9 @@ async function getUser(userID) {
 
 
 // weird bug where 6.4 and 6.3 hws are showing up when the startDate is 2022-03-01 and the hw dates are 2022-02-28 (end of month) - schoology issue? filter to fix?
-async function getUserEvents(userID, startDate = util.getISODate(), endDate = util.addDaysToDate(startDate, 7)) {
+async function getUserEvents(userID, startDate = util.getISODate(), endDate = util.addDaysToDate(startDate, 60)) {
     // get the events for the user that fall in that date range
-    const data = axios.get(`https://api.schoology.com/v1/users/${userID}/events?start_date=${startDate}&end_date=${endDate}&start=0&limit=20`, {
+    const data = axios.get(`https://api.schoology.com/v1/users/${userID}/events?start_date=${startDate}&end_date=${endDate}&start=0&limit=30`, {
         headers: getHeaders()
     }).then(res => {
         return res.data.event;

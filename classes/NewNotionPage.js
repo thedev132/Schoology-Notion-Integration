@@ -9,10 +9,16 @@ class NewNotionPage {
         this.title = sgyEvent.title;
         this.date = sgyEvent.date;
         this.database = sgyEvent.database ?? "Tasks"; // find way to make this dynamic
-        this.priority = sgyEvent.priority ?? "Medium"; // find way to make this dynamic
-        this.status = sgyEvent.status ?? "To Do"; // find way to make this dynamic
+        this.priority = sgyEvent.priority ?? "Low"; // find way to make this dynamic
+        this.status = sgyEvent.status ?? "Not Started"; // find way to make this dynamic
         this.projectRelationID = sgyEvent.projectRelationID ?? null;
+        this.url = sgyEvent.url ?? null;
         this.notes = sgyEvent.notes ?? "";
+        this.type = (sgyEvent.type) ?? "Assignment";
+        this.typeUpper = this.type.charAt(0).toUpperCase() + this.type.slice(1);
+        if (this.type === "event") {
+            this.status = "None";
+        }
     }
 
     async setProjectRelationID(relationID) {
@@ -59,6 +65,14 @@ class NewNotionPage {
                 Status: {
                     select: {
                         name: this.status,
+                    },
+                },
+                URL: {
+                    url: this.url,
+                },
+                Type: {
+                    select: {
+                        name: this.typeUpper,
                     },
                 },
             },
