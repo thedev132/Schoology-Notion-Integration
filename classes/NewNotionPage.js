@@ -19,6 +19,12 @@ class NewNotionPage {
         if (this.type === "event") {
             this.status = "None";
         }
+        else if (this.type === "assessment_v2") {
+            this.typeUpper = "Assessment";
+        }
+        if (this.title.includes("&amp;")) {
+            this.title = this.title.replace("&amp;", "&");
+        }
     }
 
     async setProjectRelationID(relationID) {

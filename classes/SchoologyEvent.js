@@ -22,7 +22,6 @@ class SchoologyEvent {
 
         const eventCourseSection = await schoology.getCourseSection(this.courseSectionID);
         const eventCourseTitle = eventCourseSection.course_title.split('-')[0];
-	console.log(eventCourseTitle)
         const notionProjects = await notion.getCourseProjects();
         for (let i = 0; i < notionProjects.length; i++) {
             if (notionProjects[i].url.includes(eventCourseTitle.split(' ')[0])) {

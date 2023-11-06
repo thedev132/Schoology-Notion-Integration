@@ -24,6 +24,7 @@ class Entry {
 
         for (let i = 0; i < sgyEvents.length; i++) {
             for (let j = 0; j < notionPages.length; j++) {
+                sgyEvents[i].title = sgyEvents[i].title.replace("&amp;", "&"); //fixes bug where &amp; is in the title and creates a duplicate
                 if (sgyEvents[i].title === notionPages[j].title) {
                     duplicates.push(new Entry(sgyEvents[i], notionPages[j]));
                 }

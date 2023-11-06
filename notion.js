@@ -10,7 +10,7 @@ const notion = new Client({
  * @param {string} endDate ISO 8601 date string of the date to end the search at
  * @returns {{Notion Page Resp}[]} Array of Notion pages that are in the master database and are within the given date range
  */
-async function getEntries(startDate = util.getISODate(), endDate = util.addDaysToDate(startDate, 7)) {
+async function getEntries(startDate = util.getISODate(), endDate = util.addDaysToDate(startDate, 30)) {
     const response = await notion.databases.query({
         database_id: process.env.NOTION_MASTER_DATABASE_ID,
         filter: {

@@ -24,7 +24,7 @@ const { Entry } = require('./classes/Entry.js');
     
     sgyEvents = sgyEvents.filter(event => {
         // workaround for the weird date range issue with the schoology API (could be an issue with my dates/timezones)
-        return event.start >= scrapeStartDate && event.start <= util.addDaysToDate(scrapeStartDate, 7);
+        return event.start >= scrapeStartDate && event.start <= util.addDaysToDate(scrapeStartDate, 30);
     }).map((event) => {
         return new SchoologyEvent(event);
     })
