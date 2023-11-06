@@ -9,11 +9,11 @@ const notion = new Client({
 class NotionPage extends NewNotionPage {
     constructor(notionPage) {
         super({
-            title: notionPage.properties.Name.title[0].text.content,
+            title: notionPage.properties.Name.title[0].text.content ?? "Untitled",
             date: notionPage.properties.Date.date.start,
             database: notionPage.properties.Database.select.name,
-            priority: notionPage.properties.Priority.multi_select[0].name,
-            status: notionPage.properties.Status.select.name,
+            priority: notionPage.properties.Priority.multi_select[0].name ?? "Low",
+            status: notionPage.properties.Status.select.name ?? "Not Started",
             projectRelationID: notionPage.properties.Project.relation[0].id,
             url: notionPage.properties.URL.url,
             // notes: (notionPage.properties.Notes.rich_text[0]) ? notionPage.properties.Notes.rich_text[0].plain_text : ""
