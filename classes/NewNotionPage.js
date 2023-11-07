@@ -61,7 +61,7 @@ class NewNotionPage {
                         }
                     ]
                 },
-                Project: {
+                Courses: {
                     relation: [
                         {
                             id: this.projectRelationID,

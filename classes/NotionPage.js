@@ -14,7 +14,7 @@ class NotionPage extends NewNotionPage {
             database: notionPage.properties.Database.select.name,
             priority: notionPage.properties.Priority.multi_select[0].name ?? "Low",
             status: notionPage.properties.Status.select.name ?? "Not Started",
-            projectRelationID: notionPage.properties.Project.relation[0].id,
+            projectRelationID: notionPage.properties.Courses.relation[0].id,
             url: notionPage.properties.URL.url,
             // notes: (notionPage.properties.Notes.rich_text[0]) ? notionPage.properties.Notes.rich_text[0].plain_text : ""
         })
