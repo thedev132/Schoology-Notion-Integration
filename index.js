@@ -15,10 +15,15 @@ const { Entry } = require('./classes/Entry.js');
 // TODO: Less loops, faster code
 // TODO: Make sgyEvent and notionEntry classes?
 // Make Notion and Schoology classes? extend these for everything else?
-(async () => {
 
+
+(async () => {
+    let grades = await schoology.getGrades(process.env.SCHOOLOGY_USER_ID)
     const scrapeStartDate = util.getISODate();
 
+    // get course IDs from notion
+    let courseIDs = await notion.getCourseProjectIDs();
+    notion.updateCourseProjectGrade(courseIDs);
     // get events from schoology & notion (7 day range default)
     let sgyEvents = await schoology.getUserEvents(process.env.SCHOOLOGY_USER_ID, scrapeStartDate);
     
@@ -68,5 +73,6 @@ const { Entry } = require('./classes/Entry.js');
     } else {
         console.info(`${util.logDatetime()} No new entries found in schoology`);
     }
+    console.log(grades.section[1]);
 
 })()

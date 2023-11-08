@@ -57,9 +57,23 @@ function getCourseSection(sectionID) {
     return data;
 }
 
+//make a functionto get grades from schoology
+function getGrades(userID, courseIDs) {
+    const data = axios.get(`https://api.schoology.com/v1/users/${userID}/grades`, {
+        headers: getHeaders()
+    }).then(res => {
+        return res.data;
+    }).catch(err => {
+        console.error(err);
+    })
+    
+    return data;
+}
+
 module.exports = {
     getAllUsers,
     getUser,
     getUserEvents,
-    getCourseSection
+    getCourseSection,
+    getGrades
 }
