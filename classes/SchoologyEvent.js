@@ -23,8 +23,9 @@ class SchoologyEvent {
         const eventCourseSection = await schoology.getCourseSection(this.courseSectionID);
         const eventCourseTitle = eventCourseSection.course_title.split('-')[0];
         const notionProjects = await notion.getCourseProjects();
+        const titleForComparison = eventCourseTitle.split(' ')[0]
         for (let i = 0; i < notionProjects.length; i++) {
-            if (notionProjects[i].url.includes(eventCourseTitle.split(' ')[0])) {
+            if (notionProjects[i].url.includes(titleForComparison.replace('/', '-'))) {
                 return notionProjects[i].id;
             }
         }
